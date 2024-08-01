@@ -1,0 +1,4 @@
+{
+  "script": "return ((done) => {\r\n            console.log('Wake me up before you go!');\r\n            setTimeout(done, 5900);\r\n        }).apply(null, arguments)",
+  "args": []
+}

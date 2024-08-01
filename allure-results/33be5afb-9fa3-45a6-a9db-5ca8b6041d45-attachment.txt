@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//div[@class=\"ui-datepicker-group ui-datepicker-group-last\"]//span[contains(@class,\"ui-datepicker-day\") and text()=\"28\"]"
+}

@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//form[@id=\"flight_search_form\"]//label[contains(string(),\"Trẻ em\")]/parent::*//following-sibling::div[@class=\"col-xs-7 col-sm-7\"]//input[@class=\"cr_children nb_children form-control text-center input-number\"]/following-sibling::span"
+}

@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//label[text()=\"Ngày về\"]//following-sibling::input[@placeholder=\"Chọn ngày\"]"
+}

@@ -1,0 +1,6 @@
+{
+  "script": "return (function(element) {\r\n            element.click();\r\n          }).apply(null, arguments)",
+  "args": [
+    {}
+  ]
+}

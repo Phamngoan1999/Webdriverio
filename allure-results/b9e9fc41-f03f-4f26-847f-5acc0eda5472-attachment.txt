@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//div[@class=\"title\" and contains(string(),\"Hà Nội\") and  contains(string(),\"Hồ Chí Minh) ]"
+}

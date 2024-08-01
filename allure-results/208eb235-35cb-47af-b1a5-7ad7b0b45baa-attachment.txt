@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//span[contains(@style,\"display\")]/input[@data-id=\"flight_from\"]\"}\n  (Session info: chrome=127.0.6533.73)",
+  "stacktrace": "\tGetHandleVerifier [0x00007FF75B8B9632+30946]\n\t(No symbol) [0x00007FF75B86E3C9]\n\t(No symbol) [0x00007FF75B766FDA]\n\t(No symbol) [0x00007FF75B7B822C]\n\t(No symbol) [0x00007FF75B7B850C]\n\t(No symbol) [0x00007FF75B7FDCB7]\n\t(No symbol) [0x00007FF75B7DCAAF]\n\t(No symbol) [0x00007FF75B7FB041]\n\t(No symbol) [0x00007FF75B7DC813]\n\t(No symbol) [0x00007FF75B7AA6E5]\n\t(No symbol) [0x00007FF75B7AB021]\n\tGetHandleVerifier [0x00007FF75B9EF83D+1301229]\n\tGetHandleVerifier [0x00007FF75B9FBDB7+1351783]\n\tGetHandleVerifier [0x00007FF75B9F2A03+1313971]\n\tGetHandleVerifier [0x00007FF75B8EDD06+245686]\n\t(No symbol) [0x00007FF75B87758F]\n\t(No symbol) [0x00007FF75B873804]\n\t(No symbol) [0x00007FF75B873992]\n\t(No symbol) [0x00007FF75B86A3EF]\n\tBaseThreadInitThunk [0x00007FFC695C257D+29]\n\tRtlUserThreadStart [0x00007FFC6A0CAF28+40]\n"
+}

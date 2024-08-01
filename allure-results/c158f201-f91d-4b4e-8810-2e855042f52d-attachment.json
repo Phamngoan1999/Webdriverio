@@ -1,0 +1,5 @@
+<span class="input-group-btn">
+							<div type="button" class="mktnd_btn_children_adult_plus btn btn-plus btn-plus-1 btn-number" data-type="plus" data-field="nb_children">
+								<i class="ico-plus"></i>
+							</div>
+						</span>

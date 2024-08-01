@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//div[@class=\"popover-content\"]//input[@class=\"cr_children nb_children form-control text-center input-number\"]"
+}

@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//div[@class=\"popover cus-popover pop-flight-passenger fade bottom in\"]//label[contains(string(),\"Trẻ em\")]/parent::*//following-sibling::div[@class=\"col-xs-7 col-sm-7\"]//div[@type=\"button\" and @data-type=\"plus\"]"
+}

@@ -1,0 +1,1 @@
+<input placeholder="Mã sân bay, Tên sân bay, Tên thành phố..." type="text" data-ext="" data-id="flight_from" class="flight_autocomplete flight_from_autocomplete autocomplete-flight-input form-control input-sm tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
