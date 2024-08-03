@@ -40,12 +40,13 @@ class SearchTest  extends Page {
             "Trẻ em")]/parent::*//following-sibling::div[@class="col-xs-7 col-sm-7"]//div[@type="button" and @data-type="plus"]');
     }
 
-    async departmentChooseTextbox(departmentText){
-        await $('//strong[contains(text(),"'+departmentText+'")]').click();
+    get inputPlusChildren(){
+        return $('//div[contains(@class,"popover cus-popover")]//label[contains(string(),\
+            "Trẻ em")]/parent::*//following-sibling::div[@class="col-xs-7 col-sm-7"]//input[@data-name="nb_children"]');
     }
 
-    async verifySelecToDepartment(departmentToTextFull){
-        await expect(this.departmentToTextbox).toHaveAttribute('value', departmentToTextFull);
+    async departmentChooseTextbox(departmentText){
+        await $('//strong[contains(text(),"'+departmentText+'")]').click();
     }
 
     async verifyCustomer(){
@@ -106,10 +107,11 @@ class SearchTest  extends Page {
         await this.btnSearch.click();
     }
 
-    async addCustomer(){
+    async addCustomer(attribute, numberCustomer){
         await this.customerLabelTextbox.click(); 
-        await this.verifyCustomer(); 
-        await this.btnPlusChildren.click(); 
+        await this.verifyCustomer();
+        await this.btnPlusChildren.click();
+        expect(await this.inputPlusChildren.getProperty(attribute)).toEqual(""+numberCustomer+"");
     }
 
 }

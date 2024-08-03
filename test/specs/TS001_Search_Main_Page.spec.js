@@ -14,6 +14,7 @@ describe('TS001_Search_Main_Page', () => {
         const CHOOSE_DEPARTMENT_FROM_TO_SEARCH = "Ho C";
         const CHOOSE_DEPARTMENT_TO_ID = "SGN";
         const CHOOSE_DEPARTMENT_TO_NAME = 'Hồ Chí Minh (SGN)';
+        const NUMBER_CUSTOMER = 1;
         const FLAG_DEPARTMENT_FROM = 'From';
         const FLAG_DEPARTMENT_TO = 'To';
 
@@ -22,7 +23,7 @@ describe('TS001_Search_Main_Page', () => {
         await SearchTest.chooseDepartmentTextbox(FLAG_DEPARTMENT_TO, CHOOSE_DEPARTMENT_TO_TEXT, CHOOSE_ATTRIBUTE_VALUE, CHOOSE_DEPARTMENT_FROM_TO_SEARCH,CHOOSE_DEPARTMENT_TO_ID, CHOOSE_DEPARTMENT_TO_NAME);
         await SearchTest.chooseDateFromTextbox(CHOOSE_ATTRIBUTE_VALUE);
         await SearchTest.chooseDateToTextbox(CHOOSE_ATTRIBUTE_VALUE);
-        await SearchTest.addCustomer();
+        await SearchTest.addCustomer(CHOOSE_ATTRIBUTE_VALUE, NUMBER_CUSTOMER);
         await SearchTest.clickSearchButton();
         await SearchResult.verifyResult();
 
