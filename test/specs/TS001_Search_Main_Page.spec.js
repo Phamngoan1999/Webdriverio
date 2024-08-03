@@ -25,5 +25,6 @@ describe('TS001_Search_Main_Page', () => {
         await SearchTest.addCustomer();
         await SearchTest.clickSearchButton();
         await SearchResult.verifyResult();
+        
     })
 })
