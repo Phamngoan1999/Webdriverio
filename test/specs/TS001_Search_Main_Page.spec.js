@@ -1,6 +1,6 @@
 const { expect } = require('@wdio/globals')
-const SearchTest = require('../page/searchTest.page')
-const SearchResult = require('../page/searchResult.page')
+const SearchTest = require('../page/search_test.page')
+const SearchResult = require('../page/search_result.page')
 
 describe('TS001_Search_Main_Page', () => {
     it('TC001_Search_Main_Page', async () => {

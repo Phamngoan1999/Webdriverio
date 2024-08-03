@@ -7,10 +7,6 @@ class SearchTest  extends Page {
         return $('//span[contains(@style,"display")]/input[@data-id="flight_from"]');
     }
 
-    async departmentChooseTextbox(departmentText){
-        await $('//strong[contains(text(),"'+departmentText+'")]').click();
-    }
-
     get departmentToSearchTextbox(){
         return $('//span[contains(@style,"display")]/input[@data-id="flight_to"]');
     }
@@ -40,7 +36,12 @@ class SearchTest  extends Page {
     }
 
     get btnPlusChildren(){
-        return $('//div[contains(@class,"popover cus-popover")]//label[contains(string(),"Trẻ em")]/parent::*//following-sibling::div[@class="col-xs-7 col-sm-7"]//div[@type="button" and @data-type="plus"]');
+        return $('//div[contains(@class,"popover cus-popover")]//label[contains(string(),\
+            "Trẻ em")]/parent::*//following-sibling::div[@class="col-xs-7 col-sm-7"]//div[@type="button" and @data-type="plus"]');
+    }
+
+    async departmentChooseTextbox(departmentText){
+        await $('//strong[contains(text(),"'+departmentText+'")]').click();
     }
 
     async verifySelecToDepartment(departmentToTextFull){

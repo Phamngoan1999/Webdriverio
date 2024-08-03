@@ -2,7 +2,7 @@ const { $ } = require('@wdio/globals')
 const Page = require('./page');
 
 class SearchResult  extends Page {
-    
+
     async verifyTitle(){
         await  expect($('//a[contains(string(),"Hà Nội - Sài Gòn (TP.HCM)")]')).toBePresent()
     }
