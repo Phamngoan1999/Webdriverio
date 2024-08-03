@@ -2,7 +2,7 @@ const { $ } = require('@wdio/globals')
 const Page = require('./page');
 
 class SearchTest  extends Page {
-
+    
     get departmentFromSearchTextbox(){
         return $('//span[contains(@style,"display")]/input[@data-id="flight_from"]');
     }
@@ -70,7 +70,7 @@ class SearchTest  extends Page {
     }
 
     async verifyDateTo(attribute){
-        const datecurent = new Date();
+        let datecurent = new Date();
         let month = datecurent.getMonth() + 2;
         let date = new Date(datecurent.getFullYear()+"-"+month+"-28");
         await expect(this.dateLabelFromTextbox).toHaveAttribute(attribute, date.toLocaleDateString());
