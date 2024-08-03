@@ -1,11 +1,21 @@
 const { $ } = require('@wdio/globals')
 const Page = require('./page');
 
-class SearchResult {
+class SearchResult  extends Page {
     
+    async verifyTitle(){
+        await  expect($('//a[contains(string(),"Hà Nội - Sài Gòn (TP.HCM)")]')).toBePresent()
+    }
+
+    async verifyDateFrome(){
+        let options = [{day: '2-digit'}, {month: '2-digit'}, {year: 'numeric'}];
+        let dateFrom = super.verifyDate(new Date, options, '/');
+        await expect($('//span[contains(text(),"'+dateFrom+'")]')).toBePresent();
+    }
+
     async verifyResult(){
-        await expect($('//a[contains(string(),"Hà Nội - Sài Gòn (TP.HCM)")]')).toBePresent()
-        await expect($('//div[@class="title" and contains(string(),"Hà Nội")]')).toBePresent()
+        this.verifyTitle()
+        this.verifyDateFrome();
     }
 
 }
