@@ -4,18 +4,31 @@ const Page = require('./page');
 class SearchResult  extends Page {
 
     async verifyTitle(){
-        await  expect($('//a[contains(string(),"Hà Nội - Sài Gòn (TP.HCM)")]')).toBePresent()
+        await  $('//a[contains(string(),"Hà Nội - Sài Gòn (TP.HCM)")]').waitForDisplayed();
     }
 
-    async verifyDateFrome(){
+    async verifyDate(date){
+        await $('//div[@class="title" and contains(string(),"Hồ Chí Minh") and contains(string(),"Hà Nội")  and contains(string(),"'+date+'")]")]').waitForDisplayed();
+    }
+
+    async verifyDateFrom(){
         let options = [{day: '2-digit'}, {month: '2-digit'}, {year: 'numeric'}];
         let dateFrom = super.verifyDate(new Date, options, '/');
-        await expect($('//span[contains(text(),"'+dateFrom+'")]')).toBePresent();
+        this.verifyDate(dateFrom);
+    }
+
+    async verifyDateTo(){
+        let datecurent = new Date();
+        let month = datecurent.getMonth() + 2;
+        await browser.executeAsync((done) => { console.log('wait element appear'); setTimeout(done, 300);});
+        let dateTo = new Date(datecurent.getFullYear()+"-"+month+"-28");
+        this.verifyDate(dateTo.toLocaleDateString());
     }
 
     async verifyResult(){
         this.verifyTitle()
-        this.verifyDateFrome();
+        this.verifyDateFrom();
+        this.verifyDateTo()
     }
 
 }

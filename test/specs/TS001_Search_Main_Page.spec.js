@@ -6,7 +6,7 @@ describe('TS001_Search_Main_Page', () => {
     it('TC001_Search_Main_Page', async () => {
         
         const CHOOSE_DEPARTMENT_FROM_TEXT = "Chọn điểm đi";
-        const CHOOSE_DEPARTMENT_FROM_TEXT_SEARCH = "HAN";
+        const CHOOSE_DEPARTMENT_FROM_TEXT_SEARCH = "Han";
         const CHOOSE_ATTRIBUTE_VALUE = "value";
         const CHOOSE_DEPARTMENT_FROM_ID = "HAN";
         const CHOOSE_DEPARTMENT_FROM_NAME = "Hà Nội (HAN)";

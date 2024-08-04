@@ -44,25 +44,22 @@ class SearchTest  extends Page {
         return $('//div[contains(@class,"popover cus-popover")]//label[contains(string(),\
             "Trẻ em")]/parent::*//following-sibling::div[@class="col-xs-7 col-sm-7"]//input[@data-name="nb_children"]');
     }
-
+    
     async departmentChooseTextbox(departmentText){
+        await $('//strong[contains(text(),"'+departmentText+'")]').waitForDisplayed()
         await $('//strong[contains(text(),"'+departmentText+'")]').click();
     }
 
     async verifyCustomer(){
-        expect($('//label[contains(string(),"Trẻ em")]')).toBePresent();
+        await expect($('//div[@id="popover_content_passenger_hotel"]//label[contains(string(),"Trẻ em")]')).toBePresent();
     }
-    
+
     async verifySelecDepartment(textPlace, attribute, departmentFromTextFull){
         await   expect($('input[placeholder="'+textPlace+'"]')).toHaveAttribute(attribute, departmentFromTextFull);
     }
 
     async departmentTextbox(textPlace){
         await $('input[placeholder="'+textPlace+'"]').click();
-    }
-
-    async verifyaddCustomer(attribute, numberCustomer){
-        await expect(this.customerLabelTextbox).toHaveAttribute(attribute, numberCustomer);
     }
 
     async verifyDateFrom(attribute){
@@ -73,7 +70,8 @@ class SearchTest  extends Page {
 
     async verifyDateTo(attribute){
         let datecurent = new Date();
-        let month = datecurent.getMonth() + 2;
+        let month;
+        await browser.executeAsync((done) => { month = datecurent.getMonth() + 2; setTimeout(done, 300);});
         let date = new Date(datecurent.getFullYear()+"-"+month+"-28");
         await expect(this.dateLabelFromTextbox).toHaveAttribute(attribute, date.toLocaleDateString());
     }
