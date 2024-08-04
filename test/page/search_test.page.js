@@ -59,7 +59,7 @@ class SearchTest  extends Page {
     }
 
     async verifySelecDepartment(textPlace, attribute, departmentTextFull){
-        await  expect(await $('input[placeholder="'+textPlace+'"]').getProperty(attribute)).toEqual(""+departmentTextFull+"");
+        await  expect(await $('input[placeholder="'+textPlace+'"]').getProperty(attribute)).toEqual(departmentTextFull);
     }
 
     async departmentTextbox(textPlace){
@@ -69,14 +69,14 @@ class SearchTest  extends Page {
     async verifyDateFrom(attribute){
         let options = [{day: '2-digit'}, {month: '2-digit'}, {year: 'numeric'}];
         let dateFrom = super.verifyDate(new Date, options, '/');
-        expect(await this.dateLabelFromTextbox.getProperty(attribute)).toEqual(""+dateFrom+"");
+        expect(await this.dateLabelFromTextbox.getProperty(attribute)).toEqual(dateFrom);
     }
 
     async verifyDateTo(attribute){
         let datecurent = new Date();
         let month = datecurent.getMonth() + 2;
         let dateTo = new Date(datecurent.getFullYear()+"-"+month+"-28");
-        expect(await this.dateLabelToTextbox.getProperty(attribute)).toEqual(""+dateTo+"");
+        expect(await this.dateLabelToTextbox.getProperty(attribute)).toEqual(dateTo);
     }
     
     async chooseDepartmentTextbox(selectFromOrTo, department, attribute, departmentSearch, departmentText, departmentTextFull){
