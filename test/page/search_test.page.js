@@ -45,8 +45,12 @@ class SearchTest  extends Page {
             "Trẻ em")]/parent::*//following-sibling::div[@class="col-xs-7 col-sm-7"]//input[@data-name="nb_children"]');
     }
     
+    get textChildren(){
+        return $('//div[@id="popover_content_passenger_hotel"]//label[contains(string(),"Trẻ em")]');
+    }
+
     async departmentChooseTextbox(departmentText){
-        await $('//strong[contains(text(),"'+departmentText+'")]').waitForDisplayed()
+        await $('//strong[contains(text(),"'+departmentText+'")]').waitForDisplayed();
         await $('//strong[contains(text(),"'+departmentText+'")]').click();
     }
 
@@ -54,9 +58,6 @@ class SearchTest  extends Page {
         await expect($('//div[@id="popover_content_passenger_hotel"]//label[contains(string(),"Trẻ em")]')).toBePresent();
     }
 
-    async verifySelecDepartment(textPlace, attribute, departmentFromTextFull){
-        await   expect($('input[placeholder="'+textPlace+'"]')).toHaveAttribute(attribute, departmentFromTextFull);
-    }
 
     async departmentTextbox(textPlace){
         await $('input[placeholder="'+textPlace+'"]').click();
@@ -65,24 +66,27 @@ class SearchTest  extends Page {
     async verifyDateFrom(attribute){
         let options = [{day: '2-digit'}, {month: '2-digit'}, {year: 'numeric'}];
         let dateFrom = super.verifyDate(new Date, options, '/');
-        await expect(this.dateLabelFromTextbox).toHaveAttribute(attribute, dateFrom);
+        expect(await this.dateLabelFromTextbox.getProperty(attribute)).toEqual(""+dateFrom+"");
     }
 
     async verifyDateTo(attribute){
         let datecurent = new Date();
-        let month;
-        await browser.executeAsync((done) => { month = datecurent.getMonth() + 2; setTimeout(done, 300);});
-        let date = new Date(datecurent.getFullYear()+"-"+month+"-28");
-        await expect(this.dateLabelFromTextbox).toHaveAttribute(attribute, date.toLocaleDateString());
+        let month = datecurent.getMonth() + 2;
+        let dateTo = new Date(datecurent.getFullYear()+"-"+month+"-28");
+        expect(await this.dateLabelToTextbox.getProperty(attribute)).toEqual(""+dateTo+"");
     }
 
+    async verifySelecDepartment(textPlace, attribute, departmentTextFull){
+        await  expect(await $('input[placeholder="'+textPlace+'"]').getProperty(attribute)).toEqual(""+departmentTextFull+"");
+    }
+    
     async chooseDepartmentTextbox(selectFromOrTo, department, attribute, departmentSearch, departmentText, departmentTextFull){
         await this.departmentTextbox(department);
         if (selectFromOrTo == "From") {
-            await expect(this.departmentFromSearchTextbox).toBePresent();
+            await this.departmentFromSearchTextbox.waitForDisplayed();
             await this.departmentFromSearchTextbox.setValue(departmentSearch);
         } else {
-            await expect(this.departmentToSearchTextbox).toBePresent();
+            await this.departmentToSearchTextbox.waitForDisplayed();
             await this.departmentToSearchTextbox.setValue(departmentSearch);
         }
         await this.departmentChooseTextbox(departmentText);
@@ -107,9 +111,11 @@ class SearchTest  extends Page {
 
     async addCustomer(attribute, numberCustomer){
         await this.customerLabelTextbox.click(); 
+        await browser.executeAsync((done) => { TIME_WAIT = 300; console.log('wait element appear + stable system'); setTimeout(done, TIME_WAIT);});
+        // $(this.btnPlusChildren).waitUntil(this.textChildren.waitForDisplayed(), { interval: 30});
         await this.verifyCustomer();
         await this.btnPlusChildren.click();
-        expect(await this.inputPlusChildren.getProperty(attribute)).toEqual(""+numberCustomer+"");
+        await expect(await this.inputPlusChildren.getProperty(attribute)).toEqual(""+numberCustomer+"");
     }
 
 }
