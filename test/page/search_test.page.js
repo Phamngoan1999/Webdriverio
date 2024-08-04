@@ -58,6 +58,9 @@ class SearchTest  extends Page {
         await expect($('//div[@id="popover_content_passenger_hotel"]//label[contains(string(),"Trẻ em")]')).toBePresent();
     }
 
+    async verifySelecDepartment(textPlace, attribute, departmentTextFull){
+        await  expect(await $('input[placeholder="'+textPlace+'"]').getProperty(attribute)).toEqual(""+departmentTextFull+"");
+    }
 
     async departmentTextbox(textPlace){
         await $('input[placeholder="'+textPlace+'"]').click();
@@ -74,10 +77,6 @@ class SearchTest  extends Page {
         let month = datecurent.getMonth() + 2;
         let dateTo = new Date(datecurent.getFullYear()+"-"+month+"-28");
         expect(await this.dateLabelToTextbox.getProperty(attribute)).toEqual(""+dateTo+"");
-    }
-
-    async verifySelecDepartment(textPlace, attribute, departmentTextFull){
-        await  expect(await $('input[placeholder="'+textPlace+'"]').getProperty(attribute)).toEqual(""+departmentTextFull+"");
     }
     
     async chooseDepartmentTextbox(selectFromOrTo, department, attribute, departmentSearch, departmentText, departmentTextFull){
